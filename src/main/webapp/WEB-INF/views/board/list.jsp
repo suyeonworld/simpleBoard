@@ -16,7 +16,7 @@
   <table border="1">
 
       <c:forEach items="${list}" var="list">
-          <tr>
+          <tr onclick="location.href='/board/detail?tno=${list.tno}'">
               <td>
                   <c:out value="${list.tno}" />
               </td>

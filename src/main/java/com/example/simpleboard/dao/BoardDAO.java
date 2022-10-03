@@ -19,6 +19,18 @@ public enum BoardDAO {
         return list;
     }
 
+    public BoardDTO selectOne(int tno){
+        BoardDTO dto = BoardDTO.builder()
+                .tno(tno)
+                .build();
+
+        @Cleanup SqlSession session = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
+
+        dto = session.selectOne("com.example.simpleboard.dao.BoardMapper.selectOne", dto);
+
+        return dto;
+    }
+
     public BoardDTO insert(String title, String memo){
         BoardDTO dto = BoardDTO.builder()
                 .title(title)

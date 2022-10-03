@@ -7,6 +7,10 @@
         select * from tbl_simpleboard;
     </select>
 
+    <select id="selectOne" resultType="com.example.simpleboard.dto.BoardDTO">
+        select * from tbl_simpleboard where tno = ${tno};
+    </select>
+
     <insert id="insert">
         insert into tbl_simpleboard (title, memo) values (#{title}, #{memo});
     </insert>

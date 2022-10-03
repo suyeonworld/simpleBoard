@@ -21,6 +21,17 @@ public class MyBatisTests {
     }
 
     @Test
+    public void selectOne(){
+        SqlSession session = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
+
+        BoardDTO dto = BoardDTO.builder().tno(3).build();
+
+        dto = session.selectOne("com.example.simpleboard.dao.BoardMapper.selectOne", dto);
+
+        log.info(dto);
+    }
+
+    @Test
     public void insert(){
         SqlSession session
                 = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
@@ -28,7 +39,5 @@ public class MyBatisTests {
         BoardDTO dto = BoardDTO.builder().title("TestTitle").memo("Memo").build();
 
         session.insert("com.example.simpleboard.dao.BoardMapper.insert",dto);
-
-
     }
 }
