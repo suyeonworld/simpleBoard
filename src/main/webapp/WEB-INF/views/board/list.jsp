@@ -13,7 +13,6 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/header.jsp"%>
-
   <table border="1">
 
       <c:forEach items="${list}" var="list">
@@ -34,6 +33,8 @@
       </c:forEach>
 
   </table>
+<br>
+    <button onclick="location.href='/board/add'">Add</button>
 
 </body>
 </html>

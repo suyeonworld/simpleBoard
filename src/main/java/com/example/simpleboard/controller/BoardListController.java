@@ -18,13 +18,20 @@ import java.util.List;
 @WebServlet (name = "BoardListController", value = "/board/list")
 public class BoardListController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
         List<BoardDTO> list = BoardDAO.INSTANCE.selectAll();
 
-        req.setAttribute("list", list);
+        request.setAttribute("list", list);
 
-        req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
+        request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //request.getRequestDispatcher("/board/add").forward(request, response);
+        //response.sendRedirect("/board/add");
     }
 }

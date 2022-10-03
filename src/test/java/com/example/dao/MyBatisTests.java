@@ -19,4 +19,16 @@ public class MyBatisTests {
 
         list.forEach(boardDTO -> log.info(boardDTO));
     }
+
+    @Test
+    public void insert(){
+        SqlSession session
+                = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
+
+        BoardDTO dto = BoardDTO.builder().title("TestTitle").memo("Memo").build();
+
+        session.insert("com.example.simpleboard.dao.BoardMapper.insert",dto);
+
+
+    }
 }
